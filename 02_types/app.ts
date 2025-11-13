@@ -81,3 +81,14 @@ if(personFour.role === Role.AUTHOR){
 else if(personFour.role === Role.ADMIN){
     console.log("Admin")
 }
+
+let firstname : string;
+let age : number;
+
+firstname = "RD";
+age = 44;
+
+// const person: object = {
+//     firstName : "Aman",
+//     age: 33
+// } // error
