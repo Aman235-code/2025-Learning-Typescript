@@ -1,3 +1,0 @@
-npm install -g typescript --save-dev
-
-tsc filename.ts then run node filename.js
