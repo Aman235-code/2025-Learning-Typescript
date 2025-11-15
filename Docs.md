@@ -116,3 +116,16 @@ const personFour : {
 <p>If you put unknown type in any variable of the type defined, then it'll give you an error</p>
 <p>If you put any type in any variable of the defined type, it's valid.</p>
 <p>Never type is mainly used in functions when we're not sure whenter it's returning anything</p>
+
+<h3>Classes: </h3>
+<p>Class: defined using class keyword</p>
+<p>Access Modifiers: private :Accessible online inside that class, protected : class and the subclass inheriting it.</p>
+<p>readonly: once you initialized, cannot re-initialize</p>
+<p>Getter: get, Setter: set</p>
+<p>Static Method: use static keyword and no need to create an obj, just use classname</p>
+<p>Abstract class: when any method defined as abstract, then you must put abstract before name of the class and the subclass must inherit that class and implementation is present in that subclass.</p>
+
+<h3>Interfaces: </h3>
+<p>defined using interface keyword, key value pairs, name of variable/function : it's type</p>
+<p>A Class can implements interface using implements keyword</p>
+<p>One interface can extends one/more interfaces using extends keyword</p>
