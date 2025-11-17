@@ -129,3 +129,6 @@ const personFour : {
 <p>defined using interface keyword, key value pairs, name of variable/function : it's type</p>
 <p>A Class can implements interface using implements keyword</p>
 <p>One interface can extends one/more interfaces using extends keyword</p>
+
+<h3>Type Guards:</h3>
+<p>When we are not sure of the type we are using it'll give an error as it's confused which type we are using, so we make use of <b>in</b> keyword in class and function.</p>
