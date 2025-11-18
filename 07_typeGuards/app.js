@@ -54,5 +54,9 @@ function useVehicle(vehicle) {
         vehicle.loadCargo(400);
     }
 }
-useVehicle(v1);
-useVehicle(v2);
+// useVehicle(v1);
+// useVehicle(v2);
+// type casting /  type assertion
+// const userInput = <HTMLInputElement>document.getElementById("user-input")!; // ! = value must present 
+var userInput = document.getElementById("user-input");
+userInput.value = "Hello hola";

@@ -82,5 +82,14 @@ function useVehicle(vehicle: Vehicle) {
     }
 }
 
-useVehicle(v1);
-useVehicle(v2)
+// useVehicle(v1);
+// useVehicle(v2);
+
+// type casting /  type assertion
+
+// const userInput = <HTMLInputElement>document.getElementById("user-input")!; // ! = value must present 
+const userInput = document.getElementById("user-input")! as HTMLInputElement
+
+userInput.value = "Hello hola"
+
+

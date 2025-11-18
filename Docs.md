@@ -132,3 +132,7 @@ const personFour : {
 
 <h3>Type Guards:</h3>
 <p>When we are not sure of the type we are using it'll give an error as it's confused which type we are using, so we make use of <b>in</b> keyword in class and function.</p>
+
+<h3>Type Casting:</h3>
+<p>Use &lt;Type&gt; to cast the type or use <b>as</b> keyword.</p>
+<p>Use ! at the last if you are sure that the value is not null.</p>
