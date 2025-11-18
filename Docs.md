@@ -1,138 +1,284 @@
-<h1 style="text-align:center">TypeScript Tutorial</h1>
+# TypeScript Tutorial
 
-To install it: ==npm install -g typescript --save-dev== 
+## Installation
 
-To run it ==tsc filename.ts then run node filename.js==
-<br/>
-<h3>Datatypes:</h3>
-<p>Totally 3 core datatypes</p>
-<p>number, string and boolean</p>
-
-```javascript
-function add(num1: number, num2: number, printResult: boolean, text: string) {
-    if (printResult) {
-        return `${text} ${num1 + num2}`;
-    }
-    else {
-        return "Not true"
-    }
-}
-
-const printResult = true;
-const text = "Sum of two numbers";
-const ans = add(20, 30, printResult, text);
-console.log(ans);
+```bash
+npm install -g typescript --save-dev
 ```
 
-<h3>Array, Object, Tuple and Enum:</h3>
-<p>Object:</p>
+To compile and run:
 
-```js
+```bash
+tsc filename.ts
+node filename.js
+```
+
+---
+
+## Core Datatypes
+
+TypeScript has three main primitive types:
+
+* number
+* string
+* boolean
+
+### Example
+
+```ts
+function add(a: number, b: number, shouldPrint: boolean, label: string) {
+  if (shouldPrint) {
+    return `${label} ${a + b}`;
+  } else {
+    return "Not true";
+  }
+}
+
+const result = add(20, 30, true, "Sum of two numbers:");
+console.log(result);
+```
+
+---
+
+## Objects, Arrays, Tuples, Enums
+
+### Object
+
+```ts
 const person: {
-    firstname: string;
-    age: number;
-    xyz: {
-        address: string;
-    }
+  firstname: string;
+  age: number;
+  address: {
+    city: string;
+  };
 } = {
-    firstname: "Aman",
-    age: 21,
-    xyz: {
-        address: "Mumbai"
-    }
-}
+  firstname: "Aman",
+  age: 21,
+  address: {
+    city: "Mumbai"
+  }
+};
 ```
 
-<p>Array:</p>
+### Array
 
-```js
-const personTwo: {
-    firstname: string;
-    age: number;
-    skills: string[];
-    nums : number[];
+```ts
+const developer: {
+  firstname: string;
+  age: number;
+  skills: string[];
+  scores: number[];
 } = {
-    firstname: "Aman",
-    age: 21,
-    skills: ["Reactjs", "Nodejs"],
-    nums: [1,2,3,4]
-}
+  firstname: "Aman",
+  age: 21,
+  skills: ["React", "Node"],
+  scores: [10, 20, 30]
+};
 ```
 
-<p>Tuple:</p>
+### Tuple
 
-```js
-const personThree : {
-    name: string;
-    age: number;
-    skills: string[];
-    product: [number, string]; // order must be important
+Tuples have a fixed order and fixed types.
+
+```ts
+const user: {
+  name: string;
+  age: number;
+  details: [number, string];
 } = {
-    name : "Aman",
-    age: 21,
-    skills: ["React", "Node", "JS"],
-    product: [10, "Macbook M2"] // sure that fixed length of dtypes will be present
+  name: "Aman",
+  age: 21,
+  details: [10, "Macbook M2"]
+};
+```
+
+### Enum
+
+```ts
+enum Role {
+  ADMIN,
+  AUTHOR,
+  READ_ONLY
+}
+
+const employee = {
+  name: "Aman",
+  role: Role.ADMIN
+};
+```
+
+---
+
+## Union, Literal Types, Type Alias
+
+### Union
+
+Allows more than one type.
+
+```ts
+let value: number | string;
+value = 10;
+value = "Hello";
+```
+
+### Literal Types
+
+```ts
+let direction: "left" | "right" | "up" | "down";
+direction = "left";
+```
+
+### Type Alias
+
+```ts
+type UserID = number | string;
+let uid: UserID = 101;
+```
+
+---
+
+## Functions
+
+* You can specify parameter types and return types.
+* If a function returns nothing, the type is `void`.
+
+### Example
+
+```ts
+function greet(name: string): string {
+  return `Hello ${name}`;
+}
+
+function logMessage(msg: string): void {
+  console.log(msg);
 }
 ```
 
-<p>Enum:</p>
+### Function Type
 
-```js
-enum Role {ADMIN, AUTHOR, READ_USER_ONLY};
+```ts
+let compute: (a: number, b: number) => number;
+compute = (x, y) => x + y;
+```
 
-const personFour : {
-    name: string;
-    age: number;
-    skills: string[];
-    product: [number, string];
-    role: Role;
-}= {
-    name : "Aman",
-    age: 21,
-    skills: ["React", "Node", "JS"],
-    product: [10, "Macbook M2"], // sure that fixed length of dtypes will be present
-    role : Role.ADMIN
+---
+
+## Unknown, Never, Any
+
+### unknown
+
+You need to check the type before using it.
+
+```ts
+let userInput: unknown = "hello";
+let username: string;
+
+if (typeof userInput === "string") {
+  username = userInput;
 }
 ```
 
-<h3>Union, Literal Types, Type Alias:</h3>
+### any
 
-<p>Union: Denoted by | </p>
-<p>Literal Types: You can make your own type and assign a value to it</p>
-<p>Type Alias/Custom Type: store the datatypes in any variable followed by <b>type</b> as the datatype name and then you can use that variable.</p>
+Allows anything. Avoid unless required.
 
-<h3>Functions:</h3>
+```ts
+let data: any = 10;
+data = "hello";
+```
 
-<p>You can define the return type after function paranthesis and before curly braces.</p>
+### never
 
-<p>If the function does not return anything, then default datatype will be <b>void.</b></p>
+Used for functions that never return.
 
-<p>Typescript Syntax for functions</p>
+```ts
+function throwError(msg: string): never {
+  throw new Error(msg);
+}
+```
 
-==let functionName: (param1: type1, ....) => return type==
+---
 
-<h3>Unknown Never and Any Types:</h3>
+## Classes
 
-<p>If you put unknown type in any variable of the type defined, then it'll give you an error</p>
-<p>If you put any type in any variable of the defined type, it's valid.</p>
-<p>Never type is mainly used in functions when we're not sure whenter it's returning anything</p>
+```ts
+class Person {
+  private id: number;
+  readonly name: string;
 
-<h3>Classes: </h3>
-<p>Class: defined using class keyword</p>
-<p>Access Modifiers: private :Accessible online inside that class, protected : class and the subclass inheriting it.</p>
-<p>readonly: once you initialized, cannot re-initialize</p>
-<p>Getter: get, Setter: set</p>
-<p>Static Method: use static keyword and no need to create an obj, just use classname</p>
-<p>Abstract class: when any method defined as abstract, then you must put abstract before name of the class and the subclass must inherit that class and implementation is present in that subclass.</p>
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
 
-<h3>Interfaces: </h3>
-<p>defined using interface keyword, key value pairs, name of variable/function : it's type</p>
-<p>A Class can implements interface using implements keyword</p>
-<p>One interface can extends one/more interfaces using extends keyword</p>
+  get details() {
+    return `${this.id} - ${this.name}`;
+  }
 
-<h3>Type Guards:</h3>
-<p>When we are not sure of the type we are using it'll give an error as it's confused which type we are using, so we make use of <b>in</b> keyword in class and function.</p>
+  static sayHello() {
+    return "Hello from static method";
+  }
+}
+```
 
-<h3>Type Casting:</h3>
-<p>Use &lt;Type&gt; to cast the type or use <b>as</b> keyword.</p>
-<p>Use ! at the last if you are sure that the value is not null.</p>
+### Abstract Class
+
+```ts
+abstract class Animal {
+  abstract speak(): void;
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log("Bark");
+  }
+}
+```
+
+---
+
+## Interfaces
+
+```ts
+interface Vehicle {
+  name: string;
+  speed: number;
+}
+
+class Car implements Vehicle {
+  name = "BMW";
+  speed = 120;
+}
+
+interface A { x: number; }
+interface B { y: number; }
+
+interface C extends A, B {}
+```
+
+---
+
+## Type Guards
+
+Used when the type is uncertain.
+
+```ts
+function printInfo(item: number | string) {
+  if (typeof item === "string") {
+    console.log(item.toUpperCase());
+  } else {
+    console.log(item.toFixed(2));
+  }
+}
+```
+
+---
+
+## Type Casting
+
+```ts
+const input = document.getElementById("username") as HTMLInputElement;
+console.log(input.value);
+
+const btn = <HTMLButtonElement>document.getElementById("submit")!;
+```
