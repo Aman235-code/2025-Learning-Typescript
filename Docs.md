@@ -282,3 +282,37 @@ console.log(input.value);
 
 const btn = <HTMLButtonElement>document.getElementById("submit")!;
 ```
+
+## Generics 
+
+<p>Defined using &lt;T&gt;</p>
+
+```ts
+// only strings must come inside
+const fruits: Array<string> = [];
+fruits.push("Apple");
+fruits.push("Mango");
+fruits.push("Banana");
+// fruits.push(67); // error 
+// console.log(fruits)
+```
+
+<p>Generic Constraints</p>
+<p>Once we defined the type using extends we only have to put the valu of that type</p>
+
+```ts
+function createObject<T extends string, U extends number, V extends boolean>(
+    key: T,
+    value: U,
+    isActive: V
+): {
+    key: T,
+    value: U,
+    isActive: V
+} {
+    return { key, value, isActive }
+}
+
+const obj = createObject("age", 25, true);
+// console.log(obj)
+```
