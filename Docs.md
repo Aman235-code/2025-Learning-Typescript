@@ -316,3 +316,29 @@ function createObject<T extends string, U extends number, V extends boolean>(
 const obj = createObject("age", 25, true);
 // console.log(obj)
 ```
+
+<p>To work with node/ express create package.json</p>
+
+```ts
+npm init -y
+```
+
+Then use 
+
+```ts
+ tsc -init
+ ```
+
+ <p>To initalize tsconfig json</p>
+
+ To run
+
+ ```ts
+ tsc -watch
+ ```
+
+Also install the types 
+
+```ts
+npm i --save-dev @types/express
+```
